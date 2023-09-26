@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:new_portfolio_WebSite/body/about.dart';
+import 'package:new_portfolio_WebSite/body/contact_page.dart';
+import 'package:new_portfolio_WebSite/body/skills_page.dart';
+import 'package:new_portfolio_WebSite/body/top_page.dart';
+import 'package:new_portfolio_WebSite/body/works.dart';
+import 'package:new_portfolio_WebSite/header/appbar_title.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp())); // ProviderScopeでアプリケーションをラップします
@@ -18,20 +24,20 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(counterProvider);
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'Schyler'),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Riverpod Counter Example'),
+          leading: Image.asset('assets/images/my_logo.png'),
+          title: const AppbarTitle(),
         ),
-        body: Center(
-            child: Text(
-          '$count',
-          style: const TextStyle(fontSize: 48.0),
-        )),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            ref.read(counterProvider.notifier).state++;
-          },
-          child: const Icon(Icons.add),
+        body: ListView(
+          children: [
+            TopPage(),
+            AboutPage(),
+            WorksPage(),
+            SkillsPage(),
+            ContactPage(),
+          ],
         ),
       ),
     );
