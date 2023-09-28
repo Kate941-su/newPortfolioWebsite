@@ -4,95 +4,35 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../share/title_text.dart';
 
-const int _crossAxisCount = 3;
+const int _crossAxisCount = 2;
 const double _skillsHeight = 100;
 const double _skillsWidth = 300;
 
 final _dummySkills = [
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
-  SizedBox(
-    width: _skillsWidth,
-    height: _skillsHeight,
-    child: ListTile(
-      leading: Container(
-        width: 100,
-        height: 100,
-        decoration: const BoxDecoration(
-          color: Colors.orange,
-        ),
-      ),
-      title: Text('dummy!dummy!dummy!dummy!dummy!'),
-    ),
-  ),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/python.png',
+      skillName: 'Python',
+      startCount: 4),
 ];
 
 class SkillsPage extends ConsumerWidget {
@@ -105,17 +45,52 @@ class SkillsPage extends ConsumerWidget {
       children: [
         const TitleText(title: 'SKILLS'),
         SizedBox(
-          height: ((_dummySkills.length / _crossAxisCount) + 1) * _skillsHeight,
+          height:
+              ((_dummySkills.length / _crossAxisCount) + 1) * _skillsHeight * 2,
           child: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(2),
-              crossAxisSpacing: 1,
-              mainAxisSpacing: 1,
               crossAxisCount: _crossAxisCount,
-              childAspectRatio: _skillsWidth/_skillsHeight,
+              childAspectRatio: _skillsWidth / _skillsHeight,
               children: _dummySkills),
         ),
       ],
     );
+  }
+}
+
+class SkillsWidget extends StatelessWidget {
+  const SkillsWidget(
+      {super.key,
+      required this.imagePath,
+      required this.skillName,
+      required this.startCount});
+
+  final String imagePath;
+  final String skillName;
+  final int startCount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+      Container(
+        width: 100.0,
+        height: 100.0,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill, image: AssetImage(imagePath))),
+      ),
+      Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(skillName),
+              Text('⭐️' * startCount),
+            ],
+          )),
+    ]);
   }
 }
