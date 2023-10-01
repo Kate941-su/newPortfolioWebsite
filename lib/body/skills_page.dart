@@ -14,25 +14,33 @@ final _dummySkills = [
       skillName: 'Python',
       startCount: 4),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/python.png',
-      skillName: 'Python',
+      imagePath: '../assets/images/skills/C++.png',
+      skillName: 'C, C++',
       startCount: 4),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/python.png',
-      skillName: 'Python',
+      imagePath: '../assets/images/skills/flt.png',
+      skillName: 'Flutter',
       startCount: 4),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/python.png',
-      skillName: 'Python',
-      startCount: 4),
+      imagePath: '../assets/images/skills/mark.png',
+      skillName: 'HTML/CSS',
+      startCount: 3),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/python.png',
-      skillName: 'Python',
-      startCount: 4),
+      imagePath: '../assets/images/skills/swift.png',
+      skillName: 'Swift',
+      startCount: 3),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/python.png',
-      skillName: 'Python',
-      startCount: 4),
+      imagePath: '../assets/images/skills/dj.jpg',
+      skillName: 'Django',
+      startCount: 3),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/php.png',
+      skillName: 'php',
+      startCount: 2),
+  const SkillsWidget(
+      imagePath: '../assets/images/skills/js.png',
+      skillName: 'Javascript',
+      startCount: 2),
 ];
 
 class SkillsPage extends ConsumerWidget {
