@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:new_portfolio_WebSite/body/about.dart';
 import 'package:new_portfolio_WebSite/body/contact_page.dart';
 import 'package:new_portfolio_WebSite/body/skills_page.dart';
@@ -9,40 +10,54 @@ import 'package:new_portfolio_WebSite/header/appbar_title.dart';
 import 'package:new_portfolio_WebSite/works/works_detail_page.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp())); // ProviderScopeでアプリケーションをラップします
+  runApp(ProviderScope(child: MyApp())); // ProviderScopeでアプリケーションをラップします
 }
 
-// CounterProviderを作成します
-final counterProvider = StateProvider<int>((ref) {
-  return 0; // 初期値は0とします
-});
-
 // メインのWidget
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
+class MyApp extends HookConsumerWidget {
+  MyApp({super.key});
+
+  var pageList = [
+    TopPage(),
+    AboutPage(),
+    WorksPage(),
+    SkillsPage(),
+    ContactPage(),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(counterProvider);
+    final pageController = usePageController();
     return MaterialApp(
-      routes: <String, WidgetBuilder> {
-        '/works_detail' : (BuildContext context) => WorksDetailPage()
+      routes: <String, WidgetBuilder>{
+        '/works_detail': (BuildContext context) => WorksDetailPage()
       },
       initialRoute: '/',
       theme: ThemeData(fontFamily: 'Schyler'),
       home: Scaffold(
         appBar: AppBar(
-          leading: Image.asset('assets/images/my_logo.png'),
-          title: const AppbarTitle(),
+          leading: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                pageController.animateToPage(PageIndex.top.index,
+                    duration: Duration(seconds: 2),
+                    curve: Curves.fastLinearToSlowEaseIn);
+              },
+              child: Image.asset('assets/images/my_logo.png'),
+            ),
+          ),
+          title: AppbarTitle(
+            pageController: pageController,
+          ),
         ),
-        body: ListView(
-          children: [
-            TopPage(),
-            AboutPage(),
-            WorksPage(),
-            SkillsPage(),
-            ContactPage(),
-          ],
+        body: PageView(
+          scrollDirection: Axis.vertical,
+          pageSnapping: false,
+          controller: pageController,
+          children: List.generate(pageList.length, (index) {
+            return pageList[index];
+          }),
         ),
       ),
     );

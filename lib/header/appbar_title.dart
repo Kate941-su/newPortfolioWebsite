@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
+enum PageIndex {
+  top,
+  about,
+  works,
+  skills,
+  contact,
+}
+
 class AppbarTitle extends StatelessWidget {
-  const AppbarTitle({super.key});
+  const AppbarTitle({required this.pageController, super.key});
+
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +21,11 @@ class AppbarTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              pageController.animateToPage(PageIndex.about.index,
+                  duration: Duration(seconds: 2),
+                  curve: Curves.fastLinearToSlowEaseIn);
+            },
             child: const Text(
               'ABOUT',
               style: TextStyle(
@@ -17,7 +33,11 @@ class AppbarTitle extends StatelessWidget {
               ),
             )),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              pageController.animateToPage(PageIndex.works.index,
+                  duration: Duration(seconds: 2),
+                  curve: Curves.fastLinearToSlowEaseIn);
+            },
             child: const Text(
               'WORKS',
               style: TextStyle(
@@ -25,7 +45,11 @@ class AppbarTitle extends StatelessWidget {
               ),
             )),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              pageController.animateToPage(PageIndex.skills.index,
+                  duration: Duration(seconds: 2),
+                  curve: Curves.fastLinearToSlowEaseIn);
+            },
             child: const Text(
               'SKILLS',
               style: TextStyle(
@@ -33,7 +57,11 @@ class AppbarTitle extends StatelessWidget {
               ),
             )),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              pageController.animateToPage(PageIndex.contact.index,
+                  duration: Duration(seconds: 2),
+                  curve: Curves.fastLinearToSlowEaseIn);
+            },
             child: const Text(
               'CONTACT',
               style: TextStyle(
