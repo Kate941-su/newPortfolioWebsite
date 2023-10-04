@@ -30,36 +30,36 @@ class MyApp extends HookConsumerWidget {
     final pageController = usePageController();
     return MaterialApp(
       routes: <String, WidgetBuilder>{
-        '/works_detail': (BuildContext context) => WorksDetailPage()
+        '/topPage': (BuildContext context) => TopPage(),
+        '/about': (BuildContext context) => AboutPage(),
+        '/works': (BuildContext context) => WorksPage(),
+        '/skills': (BuildContext context) => SkillsPage(),
+        '/contact': (BuildContext context) => ContactPage(),
+        '/works_detail': (BuildContext context) => WorksDetailPage(),
       },
       initialRoute: '/',
       theme: ThemeData(fontFamily: 'Schyler'),
       home: Scaffold(
-        appBar: AppBar(
-          leading: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTap: () {
-                pageController.animateToPage(PageIndex.top.index,
-                    duration: Duration(seconds: 2),
-                    curve: Curves.fastLinearToSlowEaseIn);
-              },
-              child: Image.asset('assets/images/my_logo.png'),
-            ),
-          ),
-          title: AppbarTitle(
-            pageController: pageController,
+        // appBar: AppBar(
+        //   leading: MouseRegion(
+        //     cursor: SystemMouseCursors.click,
+        //     child: GestureDetector(
+        //       onTap: () {
+        //         pageController.animateToPage(PageIndex.top.index,
+        //             duration: Duration(seconds: 2),
+        //             curve: Curves.fastLinearToSlowEaseIn);
+        //       },
+        //       child: Image.asset('assets/images/my_logo.png'),
+        //     ),
+        //   ),
+        //   title: AppbarTitle(
+        //     pageController: pageController,
+        //   ),
+        // ),
+        body: Container(
+            child: TopPage(),
           ),
         ),
-        body: PageView(
-          scrollDirection: Axis.vertical,
-          pageSnapping: false,
-          controller: pageController,
-          children: List.generate(pageList.length, (index) {
-            return pageList[index];
-          }),
-        ),
-      ),
-    );
+      );
   }
 }

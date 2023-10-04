@@ -20,6 +20,8 @@ dependencies:
   freezed: ^2.3.4
   freezed_annotation: ^2.2.0
   hooks_riverpod: ^2.3.4
+  auto_size_text: ^3.0.0
+  expandable_page_view: ^1.0.17
 
 dev_dependencies:
   flutter_test:

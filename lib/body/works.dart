@@ -64,22 +64,25 @@ class WorksPage extends ConsumerWidget {
         child: const Text('Heed not the rabble'),
       ),
     ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        TitleText(title: 'WORKS'),
-        SizedBox(
-          height: ((dummyWorks.length / _crossAxisCount) + 1) * _worksHeight,
-          child: GridView.count(
-            primary: false,
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 3,
-            children: dummyWorks
+    return Material(
+      type: MaterialType.transparency,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TitleText(title: 'WORKS'),
+          SizedBox(
+            height: ((dummyWorks.length / _crossAxisCount) + 1) * _worksHeight,
+            child: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              crossAxisCount: 3,
+              children: dummyWorks
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
