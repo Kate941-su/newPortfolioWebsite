@@ -14,7 +14,7 @@ final _dummySkills = [
       skillName: 'Python',
       startCount: 4),
   const SkillsWidget(
-      imagePath: '../assets/images/skills/C++.png',
+      imagePath: '../assets/images/skills/cpp.png',
       skillName: 'C, C++',
       startCount: 4),
   const SkillsWidget(

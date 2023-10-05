@@ -40,22 +40,6 @@ class MyApp extends HookConsumerWidget {
       initialRoute: '/',
       theme: ThemeData(fontFamily: 'Schyler'),
       home: Scaffold(
-        // appBar: AppBar(
-        //   leading: MouseRegion(
-        //     cursor: SystemMouseCursors.click,
-        //     child: GestureDetector(
-        //       onTap: () {
-        //         pageController.animateToPage(PageIndex.top.index,
-        //             duration: Duration(seconds: 2),
-        //             curve: Curves.fastLinearToSlowEaseIn);
-        //       },
-        //       child: Image.asset('assets/images/my_logo.png'),
-        //     ),
-        //   ),
-        //   title: AppbarTitle(
-        //     pageController: pageController,
-        //   ),
-        // ),
         body: Container(
             child: TopPage(),
           ),

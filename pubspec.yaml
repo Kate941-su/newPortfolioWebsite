@@ -22,11 +22,18 @@ dependencies:
   hooks_riverpod: ^2.3.4
   auto_size_text: ^3.0.0
   expandable_page_view: ^1.0.17
+  flutter_gen: ^5.3.2
+  flutter_gen_runner: ^5.3.2
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+
 
 
 flutter:
@@ -35,7 +42,8 @@ flutter:
     - assets/images/
     - assets/images/about/
     - assets/images/skills/
-    - assets/images/works/
+    - assets/images/works/works_thumbnail
+    - assets/images/works/works_detail
     - assets/logos/
   fonts:
     - family: Schyler
@@ -51,3 +59,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
