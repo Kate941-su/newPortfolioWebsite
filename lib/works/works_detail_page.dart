@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +14,26 @@ class WorksDetailPage extends HookConsumerWidget {
     return Material(
       type: MaterialType.transparency,
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            WorksDetailTextWidget(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 120),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              WorksDetailTextWidget(
                 title: '作品URL',
                 hostName: 'kailog.live',
-            )],
+              ),
+              WorksDetailTextWidget(
+                title: 'プライバシーポリシー',
+                hostName: 'kailog.live',
+              ),
+              WorksDetailTextWidget(
+                title: '概要',
+                description:
+                    '今後ジャンジャン追加していくポートフォリオアプリ。デザインは拝借させていただきました。バックエンドは自作しました。',
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -43,9 +57,11 @@ class WorksDetailTextWidget extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            AutoSizeText(
               title,
+              maxLines: 1,
               style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
