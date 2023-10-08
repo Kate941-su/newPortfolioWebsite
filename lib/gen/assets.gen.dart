@@ -18,6 +18,7 @@ class $AssetsImagesGen {
   AssetGenImage get myLogo => const AssetGenImage('assets/images/my_logo.png');
 
   $AssetsImagesSkillsGen get skills => const $AssetsImagesSkillsGen();
+  $AssetsImagesWorksGen get works => const $AssetsImagesWorksGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [myLogo];
@@ -86,6 +87,146 @@ class $AssetsImagesSkillsGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [cpp, dj, flt, js, mark, php, python, swift, wp];
+}
+
+class $AssetsImagesWorksGen {
+  const $AssetsImagesWorksGen();
+
+  $AssetsImagesWorksWorksDetailGen get worksDetail =>
+      const $AssetsImagesWorksWorksDetailGen();
+  $AssetsImagesWorksWorksThumbnailGen get worksThumbnail =>
+      const $AssetsImagesWorksWorksThumbnailGen();
+}
+
+class $AssetsImagesWorksWorksDetailGen {
+  const $AssetsImagesWorksWorksDetailGen();
+
+  /// File path: assets/images/works/works_detail/ApplicationModel.png
+  AssetGenImage get applicationModel => const AssetGenImage(
+      'assets/images/works/works_detail/ApplicationModel.png');
+
+  /// File path: assets/images/works/works_detail/ApplicationModel_uPzSoe8.png
+  AssetGenImage get applicationModelUPzSoe8 => const AssetGenImage(
+      'assets/images/works/works_detail/ApplicationModel_uPzSoe8.png');
+
+  /// File path: assets/images/works/works_detail/blood_pressure1.png
+  AssetGenImage get bloodPressure1 => const AssetGenImage(
+      'assets/images/works/works_detail/blood_pressure1.png');
+
+  /// File path: assets/images/works/works_detail/blood_pressure2.png
+  AssetGenImage get bloodPressure2 => const AssetGenImage(
+      'assets/images/works/works_detail/blood_pressure2.png');
+
+  /// File path: assets/images/works/works_detail/blood_pressure3.png
+  AssetGenImage get bloodPressure3 => const AssetGenImage(
+      'assets/images/works/works_detail/blood_pressure3.png');
+
+  /// File path: assets/images/works/works_detail/blood_pressure4.png
+  AssetGenImage get bloodPressure4 => const AssetGenImage(
+      'assets/images/works/works_detail/blood_pressure4.png');
+
+  /// File path: assets/images/works/works_detail/kaitonoheya.png
+  AssetGenImage get kaitonoheya =>
+      const AssetGenImage('assets/images/works/works_detail/kaitonoheya.png');
+
+  /// File path: assets/images/works/works_detail/kyosho1.jpg
+  AssetGenImage get kyosho1 =>
+      const AssetGenImage('assets/images/works/works_detail/kyosho1.jpg');
+
+  /// File path: assets/images/works/works_detail/kyosho2.jpg
+  AssetGenImage get kyosho2 =>
+      const AssetGenImage('assets/images/works/works_detail/kyosho2.jpg');
+
+  /// File path: assets/images/works/works_detail/kyosho3.jpg
+  AssetGenImage get kyosho3 =>
+      const AssetGenImage('assets/images/works/works_detail/kyosho3.jpg');
+
+  /// File path: assets/images/works/works_detail/kyosho4.jpg
+  AssetGenImage get kyosho4 =>
+      const AssetGenImage('assets/images/works/works_detail/kyosho4.jpg');
+
+  /// File path: assets/images/works/works_detail/kyosho4_PjKDEo0.jpg
+  AssetGenImage get kyosho4PjKDEo0 => const AssetGenImage(
+      'assets/images/works/works_detail/kyosho4_PjKDEo0.jpg');
+
+  /// File path: assets/images/works/works_detail/nakaze1.png
+  AssetGenImage get nakaze1 =>
+      const AssetGenImage('assets/images/works/works_detail/nakaze1.png');
+
+  /// File path: assets/images/works/works_detail/nakaze2.png
+  AssetGenImage get nakaze2 =>
+      const AssetGenImage('assets/images/works/works_detail/nakaze2.png');
+
+  /// File path: assets/images/works/works_detail/nakaze3.png
+  AssetGenImage get nakaze3 =>
+      const AssetGenImage('assets/images/works/works_detail/nakaze3.png');
+
+  /// File path: assets/images/works/works_detail/nakaze4.png
+  AssetGenImage get nakaze4 =>
+      const AssetGenImage('assets/images/works/works_detail/nakaze4.png');
+
+  /// File path: assets/images/works/works_detail/nakaze5.png
+  AssetGenImage get nakaze5 =>
+      const AssetGenImage('assets/images/works/works_detail/nakaze5.png');
+
+  /// File path: assets/images/works/works_detail/portfolio1.png
+  AssetGenImage get portfolio1 =>
+      const AssetGenImage('assets/images/works/works_detail/portfolio1.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        applicationModel,
+        applicationModelUPzSoe8,
+        bloodPressure1,
+        bloodPressure2,
+        bloodPressure3,
+        bloodPressure4,
+        kaitonoheya,
+        kyosho1,
+        kyosho2,
+        kyosho3,
+        kyosho4,
+        kyosho4PjKDEo0,
+        nakaze1,
+        nakaze2,
+        nakaze3,
+        nakaze4,
+        nakaze5,
+        portfolio1
+      ];
+}
+
+class $AssetsImagesWorksWorksThumbnailGen {
+  const $AssetsImagesWorksWorksThumbnailGen();
+
+  /// File path: assets/images/works/works_thumbnail/blood_pressure_thumb.png
+  AssetGenImage get bloodPressureThumb => const AssetGenImage(
+      'assets/images/works/works_thumbnail/blood_pressure_thumb.png');
+
+  /// File path: assets/images/works/works_thumbnail/kaitos_room_thumb.png
+  AssetGenImage get kaitosRoomThumb => const AssetGenImage(
+      'assets/images/works/works_thumbnail/kaitos_room_thumb.png');
+
+  /// File path: assets/images/works/works_thumbnail/kyosho_thumb.jpg
+  AssetGenImage get kyoshoThumb => const AssetGenImage(
+      'assets/images/works/works_thumbnail/kyosho_thumb.jpg');
+
+  /// File path: assets/images/works/works_thumbnail/nakaze_thumb.png
+  AssetGenImage get nakazeThumb => const AssetGenImage(
+      'assets/images/works/works_thumbnail/nakaze_thumb.png');
+
+  /// File path: assets/images/works/works_thumbnail/portfolio_thumb.png
+  AssetGenImage get portfolioThumb => const AssetGenImage(
+      'assets/images/works/works_thumbnail/portfolio_thumb.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        bloodPressureThumb,
+        kaitosRoomThumb,
+        kyoshoThumb,
+        nakazeThumb,
+        portfolioThumb
+      ];
 }
 
 class Assets {
