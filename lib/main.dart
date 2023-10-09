@@ -7,6 +7,8 @@ import 'package:new_portfolio_WebSite/body/skills_page.dart';
 import 'package:new_portfolio_WebSite/body/top_page.dart';
 import 'package:new_portfolio_WebSite/body/works.dart';
 import 'package:new_portfolio_WebSite/header/appbar_title.dart';
+import 'package:new_portfolio_WebSite/routes.dart';
+import 'package:new_portfolio_WebSite/works/works_detail_list.dart';
 import 'package:new_portfolio_WebSite/works/works_detail_page.dart';
 
 void main() {
@@ -29,21 +31,12 @@ class MyApp extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageController = usePageController();
     return MaterialApp(
-      routes: <String, WidgetBuilder>{
-        '/topPage': (BuildContext context) => TopPage(),
-        '/about': (BuildContext context) => AboutPage(),
-        '/works': (BuildContext context) => WorksPage(),
-        '/skills': (BuildContext context) => SkillsPage(),
-        '/contact': (BuildContext context) => ContactPage(),
-        '/works_detail': (BuildContext context) => WorksDetailPage(),
-      },
+      routes: routes,
       initialRoute: '/',
       theme: ThemeData(fontFamily: 'Schyler'),
-      home: Scaffold(
-        body: Container(
-            child: TopPage(),
-          ),
-        ),
-      );
+      home: const Scaffold(
+        body: TopPage(),
+      ),
+    );
   }
 }

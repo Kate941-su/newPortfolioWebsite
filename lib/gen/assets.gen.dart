@@ -125,6 +125,22 @@ class $AssetsImagesWorksWorksDetailGen {
   AssetGenImage get bloodPressure4 => const AssetGenImage(
       'assets/images/works/works_detail/blood_pressure4.png');
 
+  /// File path: assets/images/works/works_detail/kailog1.png
+  AssetGenImage get kailog1 =>
+      const AssetGenImage('assets/images/works/works_detail/kailog1.png');
+
+  /// File path: assets/images/works/works_detail/kailog2.png
+  AssetGenImage get kailog2 =>
+      const AssetGenImage('assets/images/works/works_detail/kailog2.png');
+
+  /// File path: assets/images/works/works_detail/kailog3.png
+  AssetGenImage get kailog3 =>
+      const AssetGenImage('assets/images/works/works_detail/kailog3.png');
+
+  /// File path: assets/images/works/works_detail/kailog4.png
+  AssetGenImage get kailog4 =>
+      const AssetGenImage('assets/images/works/works_detail/kailog4.png');
+
   /// File path: assets/images/works/works_detail/kaitonoheya.png
   AssetGenImage get kaitonoheya =>
       const AssetGenImage('assets/images/works/works_detail/kaitonoheya.png');
@@ -181,6 +197,10 @@ class $AssetsImagesWorksWorksDetailGen {
         bloodPressure2,
         bloodPressure3,
         bloodPressure4,
+        kailog1,
+        kailog2,
+        kailog3,
+        kailog4,
         kaitonoheya,
         kyosho1,
         kyosho2,

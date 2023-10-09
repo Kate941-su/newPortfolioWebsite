@@ -20,34 +20,22 @@ class WorksPage extends ConsumerWidget {
     final dummyWorks = [
       WorksThumbnailComponent(
         height: _worksHeight,
-          title: 'SAMPLE1',
+          pushName: '/works_detail_nakaze',
+          title: '浜松ナカゼ歯科様',
           imageProvider:
-              Assets.images.works.worksThumbnail.kaitosRoomThumb.provider()),
+              Assets.images.works.worksThumbnail.nakazeThumb.provider()),
       WorksThumbnailComponent(
           height: _worksHeight,
-          title: 'SAMPLE2',
-          imageProvider:
-          Assets.images.works.worksThumbnail.kyoshoThumb.provider()),
-      WorksThumbnailComponent(
-          height: _worksHeight,
-          title: 'SAMPLE3',
-          imageProvider:
-          Assets.images.works.worksThumbnail.nakazeThumb.provider()),
-      WorksThumbnailComponent(
-          height: _worksHeight,
-          title: 'SAMPLE4',
+          pushName: '/works_detail_kailog',
+          title: 'Kaito Kitaya Portfolio',
           imageProvider:
           Assets.images.works.worksThumbnail.portfolioThumb.provider()),
       WorksThumbnailComponent(
           height: _worksHeight,
-          title: 'SAMPLE5',
+          pushName: '/works_detail_blood_pressure',
+          title: 'シンプル血圧管理',
           imageProvider:
           Assets.images.works.worksThumbnail.bloodPressureThumb.provider()),
-      WorksThumbnailComponent(
-          height: _worksHeight,
-          title: 'SAMPLE6',
-          imageProvider:
-          Assets.images.works.worksThumbnail.kaitosRoomThumb.provider()),
     ];
     return Material(
       type: MaterialType.transparency,
@@ -78,11 +66,13 @@ class WorksThumbnailComponent extends StatelessWidget {
       {required this.title,
       required this.imageProvider,
       required this.height,
+        required this.pushName,
       super.key});
 
   final double height;
   final String title;
   final ImageProvider imageProvider;
+  final String pushName;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +85,7 @@ class WorksThumbnailComponent extends StatelessWidget {
             BoxDecoration(image: DecorationImage(image: imageProvider)),
             child: InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed('/works_detail');
+                Navigator.of(context).pushNamed(pushName);
               },
             ),
           ),
