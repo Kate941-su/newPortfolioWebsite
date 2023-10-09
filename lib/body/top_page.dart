@@ -76,7 +76,7 @@ class TopPage extends StatelessWidget {
               maxLines: 1,
             ),
             AutoSizeText(
-              'Latest Update MM/DD',
+              'Latest Update 2023/10/09',
               style: TextStyle(fontSize: 24.0),
               minFontSize: 12,
               maxLines: 1,

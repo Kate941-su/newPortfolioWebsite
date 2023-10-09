@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,16 +9,16 @@ const double _skillsWidth = 300;
 
 final _dummySkills = [
   const SkillsWidget(
+      imagePath: '../assets/images/skills/flt.png',
+      skillName: 'Flutter',
+      startCount: 4),
+  const SkillsWidget(
       imagePath: '../assets/images/skills/python.png',
       skillName: 'Python',
       startCount: 4),
   const SkillsWidget(
       imagePath: '../assets/images/skills/cpp.png',
       skillName: 'C, C++',
-      startCount: 4),
-  const SkillsWidget(
-      imagePath: '../assets/images/skills/flt.png',
-      skillName: 'Flutter',
       startCount: 4),
   const SkillsWidget(
       imagePath: '../assets/images/skills/mark.png',
@@ -49,24 +48,51 @@ class SkillsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      type: MaterialType.transparency,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const TitleText(title: 'SKILLS'),
-            SizedBox(
-              height:
-                  ((_dummySkills.length / _crossAxisCount) + 1) * _skillsHeight * 2,
-              child: GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(2),
-                  crossAxisCount: _crossAxisCount,
-                  childAspectRatio: _skillsWidth / _skillsHeight,
-                  children: _dummySkills),
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const TitleText(title: 'SKILLS'),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('⭐️⭐️⭐️⭐️⭐️ : 内部構造まで深く議論ができる'),
+                    Text('⭐️⭐️⭐️⭐ : 個人開発ができる'),
+                    Text('⭐️⭐️⭐ : 特に資料なしで開発できる'),
+                    Text('⭐️⭐️ : 本や資料を手元に置いて開発ができる'),
+                    Text('⭐ : 触ったことがある'),
+                  ],
+                ),
+                SizedBox(
+                  height: ((_dummySkills.length / _crossAxisCount) + 1) *
+                      _skillsHeight *
+                      5,
+                  child: GridView.count(
+                      primary: false,
+                      padding: const EdgeInsets.all(2),
+                      crossAxisCount: _crossAxisCount,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: _skillsWidth / _skillsHeight,
+                      children: _dummySkills),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+              right: 32,
+              bottom: 32,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon:const Icon(
+                    Icons.home,
+                    size: 32,
+                  )))
+        ]
       ),
     );
   }
@@ -85,9 +111,7 @@ class SkillsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         width: 100.0,
         height: 100.0,
@@ -96,7 +120,7 @@ class SkillsWidget extends StatelessWidget {
                 fit: BoxFit.fill, image: AssetImage(imagePath))),
       ),
       Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

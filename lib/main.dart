@@ -8,6 +8,7 @@ import 'package:new_portfolio_WebSite/body/top_page.dart';
 import 'package:new_portfolio_WebSite/body/works.dart';
 import 'package:new_portfolio_WebSite/header/appbar_title.dart';
 import 'package:new_portfolio_WebSite/routes.dart';
+import 'package:new_portfolio_WebSite/share/back_button.dart';
 import 'package:new_portfolio_WebSite/works/works_detail_list.dart';
 import 'package:new_portfolio_WebSite/works/works_detail_page.dart';
 
@@ -29,7 +30,6 @@ class MyApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageController = usePageController();
     return MaterialApp(
       routes: routes,
       initialRoute: '/',

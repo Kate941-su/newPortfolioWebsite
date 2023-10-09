@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,6 @@ const pageHeight = 150.0;
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final aboutListTileList = [
@@ -19,7 +19,8 @@ class AboutPage extends StatelessWidget {
       ),
       AboutListTile(
         imagePath: '../assets/images/about/python.png',
-        description: '名古屋工業大学に入学。大学三年生のとき研究ではじめてPythonを触る。\nここからプログラミングの面白さに気づき始める',
+        description:
+            '名古屋工業大学に入学。大学三年生のとき研究ではじめてPythonを触る。\nここからプログラミングの面白さに気づき始める',
       ),
       AboutListTile(
         imagePath: '../assets/images/about/mol.jpg',
@@ -35,20 +36,30 @@ class AboutPage extends StatelessWidget {
       ),
       AboutListTile(
         imagePath: '../assets/images/about/be.jpg',
-        description: 'Web・スマホアプリ開発エンジニアになりたい気持ちが捨てきれず退社\n名古屋へ帰還。フルリモートの会社でスマホアプリ・バックエンドエンジニアとして再出発。',
+        description:
+            'Web・スマホアプリ開発エンジニアになりたい気持ちが捨てきれず退社\n名古屋へ帰還。フルリモートの会社でスマホアプリ・バックエンドエンジニアとして再出発。',
       ),
     ];
     return Material(
-      type: MaterialType.transparency,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const TitleText(title: 'ABOUT'),
-            ...aboutListTileList
-          ],
+      child: Stack(children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [const TitleText(title: 'ABOUT'), ...aboutListTileList],
+          ),
         ),
-      ),
+        Positioned(
+            right: 32,
+            bottom: 32,
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon:const Icon(
+                  Icons.home,
+                  size: 32,
+                )))
+      ]),
     );
   }
 }
@@ -63,27 +74,29 @@ class AboutListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: pageWidth,
-            height: pageHeight,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(imagePath)
-                )
+      padding: const EdgeInsets.all(32.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Container(
+          width: pageWidth,
+          height: pageHeight,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                  fit: BoxFit.fill, image: AssetImage(imagePath))),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.4,
+            child: AutoSizeText(
+              description,
+              minFontSize: 12,
+              maxLines: 5,
+              style: const TextStyle(fontSize: 16, color: Colors.black),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: SizedBox(width: 600,child: Text(description, style: TextStyle(fontSize: 16, color: Colors.black),)),
-          ),
-        ]
-      ),
+        ),
+      ]),
     );
   }
 }

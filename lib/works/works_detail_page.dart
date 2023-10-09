@@ -8,16 +8,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../gen/assets.gen.dart';
 
-
-
 class WorksDetailPage extends HookConsumerWidget {
-  const WorksDetailPage({
-    required this.title,
-    this.privacyPolicyHostName,
-    this.productUrlHostName,
-    required this.description,
-    required this.imageList,
-    super.key});
+  const WorksDetailPage(
+      {required this.title,
+      this.privacyPolicyHostName,
+      this.productUrlHostName,
+      required this.description,
+      required this.imageList,
+      super.key});
 
   final String title;
   final String? privacyPolicyHostName;
@@ -28,45 +26,54 @@ class WorksDetailPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      type: MaterialType.transparency,
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  title,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 64),
+        child: Stack(children: [
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 64),
+                  ),
                 ),
-              ),
-              _ImageWindow(imageList: imageList),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 120),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  if(productUrlHostName != null)
+                Center(child: _ImageWindow(imageList: imageList)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 120),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (productUrlHostName != null)
+                        _WorksDetailTextWidget(
+                          title: '作品URL',
+                          hostName: productUrlHostName,
+                        ),
+                      if (privacyPolicyHostName != null)
+                        _WorksDetailTextWidget(
+                          title: 'プライバシーポリシー',
+                          privacyPolicyPushName: privacyPolicyHostName,
+                        ),
                       _WorksDetailTextWidget(
-                        title: '作品URL',
-                        hostName: productUrlHostName,
-                      ),
-                    if (privacyPolicyHostName != null)
-                      _WorksDetailTextWidget(
-                        title: 'プライバシーポリシー',
-                        hostName: privacyPolicyHostName,
-                      ),
-                    _WorksDetailTextWidget(
-                      title: '概要',
-                      description: description
-                    )
-                  ],
+                          title: '概要', description: description)
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Positioned(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).popAndPushNamed('/works');
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back_outlined,
+                          size: 32,
+                        )))
+              ],
+            ),
           ),
-        ),
+        ]),
       ),
     );
   }
@@ -77,10 +84,12 @@ class _WorksDetailTextWidget extends ConsumerWidget {
     super.key,
     required this.title,
     this.description,
+    this.privacyPolicyPushName,
     this.hostName,
   });
 
   final String title;
+  final String? privacyPolicyPushName;
   final String? hostName;
   final String? description;
 
@@ -99,30 +108,36 @@ class _WorksDetailTextWidget extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            hostName != null
-                ? InkWell(
-                    child: Text(
-                      'https://${hostName!}',
-                      style: const TextStyle(color: Colors.blue),
-                    ),
-                    onTap: () async {
-                      if (!await launchUrl(Uri.http(hostName!))) {
-                        throw Exception('Could not launch the URI ');
-                      }
-                    })
-                : description != null
-                    ? Text(description!)
-                    : const Text(''),
+            if (hostName != null)
+              InkWell(
+                  child: Text(
+                    'https://${hostName!}',
+                    style: const TextStyle(color: Colors.blue),
+                  ),
+                  onTap: () async {
+                    if (!await launchUrl(Uri.http(hostName!))) {
+                      throw Exception('Could not launch the URI ');
+                    }
+                  }),
+            if (privacyPolicyPushName != null)
+              InkWell(
+                child: Text(
+                  privacyPolicyPushName!,
+                  style: const TextStyle(color: Colors.blue),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(
+                      context, 'privacy_policy_pressure_management');
+                },
+              ),
+            if (description != null) Text(description!)
           ],
         ));
   }
 }
 
 class _ImageWindow extends HookConsumerWidget {
-  const _ImageWindow({
-    required this.imageList,
-    super.key
-  });
+  const _ImageWindow({required this.imageList, super.key});
 
   final List<SelectableWidget> imageList;
 
@@ -157,5 +172,3 @@ class _ImageWindow extends HookConsumerWidget {
     );
   }
 }
-
-
